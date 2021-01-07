@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Todo App</title>
     <link rel="stylesheet" href="/assets/css/style.css">
     <script src="https://kit.fontawesome.com/0c5136295b.js" crossorigin="anonymous"></script>
 </head>
@@ -17,13 +17,13 @@
             </tr>
             <tr>
                 <td colspan="4"><label for="description">
-                    Description
+                    <strong>Description</strong>
                     <input type="text" placeholder="Add A Description" id="description">
                 </label></td>
             </tr>
             <tr>
                 <td colspan="2">
-                    <label for="category">Category
+                    <label for="category"><strong>Category</strong>
                         <select name="category" id="category" >
                             <option value="">Choose a Category</option>
                             <option value="Personal">Personal</option>
@@ -34,30 +34,37 @@
                 </td>
                 <td colspan="2">
                     <label for="date">
-                        Due Date
-                        <input type="date" name="date" id="date">
+                        <strong>Due Date</strong>
+                        <input type="date" name="due_date" id="date">
                     </label>
                 </td>
             </tr>
             <tr>
-                <td colspan="2"><button id="addTask"><i class="fa fa-plus"></i>    Add Task</button></td>
-                <td colspan="2"><button id="deleteTask"><i class="fa fa-trash"></i>Delete Task</button></td>
+                <td colspan="2"><button id="addTask"><i class="fa fa-plus"></i>  ADD TASK</button></td>
+                <td colspan="2"><button id="deleteTask"><i class="fa fa-trash"></i>  DELETE TASKS</button></td>
             </tr>
-            <%todos.forEach(function(todo){%>
-                 <tr>
-                     <td colspan="4" class="todo">
-                         <%if(todo.done){%>
-                             <input type="checkbox" name="<%=todo._id%>" id="<%=todo._id%>" checked>
-                             <strong class="checked"><%=todo.description%></strong>
-                              <strong> <%= todo.due_date %></strong>
-                        <%}else {%>
-                            <input type="checkbox" name="<%=todo._id%>" id="<%=todo._id%>" >
-                            <strong ><%=todo.description%></strong>
-                             <strong> <%= todo.due_date %></strong>
-                       <%}%>
-                     </td>
-                 </tr> 
-                <%})%>
+             <div id="todo-container">
+                <%todos.forEach(function(todo,index){%>
+                    <tr>
+                        <td colspan="2" class="todo">
+                            <%if(todo.done){%>
+                                <input type="checkbox" name="<%=todo._id%>" id="<%=todo._id%>" checked>
+                                <strong class="checked"><%=todo.description%></strong>
+                                 <strong class="due_date"> <i class="fa fa-calendar" aria-hidden="true"></i> <%= todo.due_date %></strong>
+                                 
+                                 <%}else {%>
+                               <input type="checkbox" name="<%=todo._id%>" id="<%=todo._id%>" >
+                               <strong ><%=todo.description%></strong>
+                                <strong class="due_date"> <i class="fa fa-calendar" aria-hidden="true"></i> <%= todo.due_date %></strong>
+                          <%}%>
+                          </td>
+                          <td colspan="2" class="todo">
+                            <button class="category"><strong><%= todo.category%></strong></button>
+                        
+                          </td>
+                    </tr> 
+                   <%})%>
+             </div>
         </table>
         <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
         <script src="/assets/js/scripts.js"></script>

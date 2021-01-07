@@ -5,7 +5,15 @@ const port=8000;
 var homeRouter=require("./routers/home.js")
 app.set('view engine','ejs')
 app.set('views','views')
-app.use(express.static(__dirname))
+var bodyParser = require('body-parser')
+
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+
+// parse application/json
+app.use(bodyParser.json())
+app.use(express.static(__dirname));
 app.use("/",require("./routers/index"))
 
 app.listen(port,function(){

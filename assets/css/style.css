@@ -1,3 +1,4 @@
+/* Designing full app as a Table */
 #todoapp,table,td{
     margin: auto;
     background-color:white;
@@ -8,7 +9,8 @@
 }
 
 input:focus,
-select:focus{
+select:focus,
+button:focus{
     outline:none;
 }
 input,select{
@@ -46,6 +48,7 @@ input[type="checkbox"]{
     height: 20px;
     width: 20px;
     border-radius: 4px;
+    display: inline;
 }
 .todo{
     height: 50px;
@@ -55,8 +58,34 @@ input[type="checkbox"]{
 }
 body{
     background-color: black;
+    color:gray;
 }
 #title{
   text-align: center;
   color: rgb(54, 56, 58);
  }
+.due_date {
+    display:block;
+    color: gray;
+    width: 50%;
+    margin-right: 0px;
+}
+.category{
+    margin-left: auto;
+    margin-right: 5px;
+    padding:auto;
+    height: 50px;
+    width: 75px;
+    background-color: red;
+    border-radius: 8px;
+    display: flex;
+    text-align: center;
+    color: white;
+}
+.category strong{
+    padding-top: 15px;
+}
+.todo{
+    border-left: none;
+    border-right: none;
+}
